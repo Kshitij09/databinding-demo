@@ -15,8 +15,7 @@ public class ProfilePresenter {
         user.setValue(new User("John", "Doe"));
     }
 
-    public Popularity getPopularity() {
-        int likes = user.getValue().getLikes();
+    public Popularity getPopularity(int likes) {
         if (likes > 9)
             return Popularity.STAR;
         if (likes > 4)

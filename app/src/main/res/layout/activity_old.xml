@@ -4,6 +4,9 @@
     <data>
 
         <variable
+            name="popularity"
+            type="com.kshitijpatil.databindingdemo.data.ProfilePresenter.Popularity" />
+        <variable
             name="user"
             type="androidx.lifecycle.LiveData&lt;com.kshitijpatil.databindingdemo.models.User>" />
 
@@ -72,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:src="@drawable/ic_person_black_96dp"
+            app:popularity="@{presenter.getPopularity(user.likes)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
@@ -118,6 +121,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:max="@{100}"
+            app:hideIfZero="@{user.likes}"
+            app:progress_scaled="@{user.likes}"
             app:layout_constraintEnd_toEndOf="@id/btn_like"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@id/btn_like"
